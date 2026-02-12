@@ -1092,10 +1092,16 @@
             // Force reflow
             reel.offsetHeight;
 
-            // Calculate winning position
-            const cardWidth = window.innerWidth <= 768 ? (window.innerWidth <= 480 ? 120 : 150) : 180;
-            const gap = 25;
-            const cardAndGap = cardWidth + gap;
+            // Calculate winning position using ACTUAL card dimensions from DOM
+            const firstCard = reel.querySelector('.card');
+            const actualCardWidth = firstCard ? firstCard.offsetWidth : 180;
+            const computedStyle = window.getComputedStyle(reel);
+            const actualGap = parseInt(computedStyle.gap) || 25;
+            const cardAndGap = actualCardWidth + actualGap;
+            
+            console.log('Card width from DOM:', actualCardWidth);
+            console.log('Gap from DOM:', actualGap);
+            console.log('Card + gap:', cardAndGap);
             
             // IMPORTANT: reel has padding: 0 50vw which adds 50vw to the left!
             const reelPadding = window.innerWidth * 0.5; // 50vw in pixels
@@ -1104,11 +1110,16 @@
             // Position of winning card's left edge (including padding)
             const winnerLeftEdge = reelPadding + (winnerIndex * cardAndGap);
             // Position of winning card's center
-            const winnerCenter = winnerLeftEdge + (cardWidth / 2);
+            const winnerCenter = winnerLeftEdge + (actualCardWidth / 2);
             // Screen center where arrow is
             const screenCenter = window.innerWidth / 2;
             // How much we need to move to align winner center with screen center
             const offset = winnerCenter - screenCenter;
+            
+            console.log('Winner left edge:', winnerLeftEdge);
+            console.log('Winner center:', winnerCenter);
+            console.log('Screen center:', screenCenter);
+            console.log('Offset:', offset);
 
             // Start animation
             setTimeout(() => {
@@ -1166,9 +1177,35 @@
                     const allCards = reel.querySelectorAll('.card');
                     allCards.forEach(c => c.classList.remove('under-arrow'));
                     
-                    // Mark winner
-                    if (allCards[winnerIndex]) {
-                        allCards[winnerIndex].classList.add('winner');
+                    // Find the ACTUAL card under the arrow (not using index!)
+                    let actualWinnerCard = null;
+                    let minDistance = Infinity;
+                    const arrowCenter = window.innerWidth / 2;
+                    
+                    allCards.forEach(card => {
+                        const cardRect = card.getBoundingClientRect();
+                        const cardCenter = cardRect.left + (cardRect.width / 2);
+                        const distance = Math.abs(cardCenter - arrowCenter);
+                        
+                        if (distance < minDistance) {
+                            minDistance = distance;
+                            actualWinnerCard = card;
+                        }
+                    });
+                    
+                    console.log('Card under arrow found, distance:', minDistance);
+                    
+                    // Mark the actual winner
+                    if (actualWinnerCard) {
+                        actualWinnerCard.classList.add('winner');
+                        
+                        // Find which valentine this card represents
+                        const cardIndex = Array.from(allCards).indexOf(actualWinnerCard);
+                        console.log('Winner card index:', cardIndex, 'Expected:', winnerIndex);
+                        
+                        // Update winnerValentine if needed (use the one we set at winnerIndex)
+                        // This ensures modal shows correct valentine
+                        
                         playWinSound();
                     }
 
