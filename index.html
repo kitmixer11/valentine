@@ -108,6 +108,69 @@
             display: none !important;
         }
 
+        .branding {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 0.75rem;
+            color: rgba(217, 57, 84, 0.6);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .branding:hover {
+            color: rgba(217, 57, 84, 1);
+            transform: scale(1.05);
+        }
+
+        .music-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            border: 2px solid rgba(217, 57, 84, 0.3);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(217, 57, 84, 0.2);
+        }
+
+        .music-toggle:hover {
+            transform: scale(1.1);
+            border-color: rgba(217, 57, 84, 0.6);
+            box-shadow: 0 6px 20px rgba(217, 57, 84, 0.3);
+        }
+
+        .music-toggle.playing {
+            background: rgba(217, 57, 84, 0.1);
+        }
+
+        @media (max-width: 480px) {
+            .branding {
+                font-size: 0.65rem;
+                bottom: 15px;
+                right: 15px;
+            }
+
+            .music-toggle {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+                top: 15px;
+                right: 15px;
+            }
+        }
+
         .case-opening {
             position: relative;
             width: 100%;
@@ -128,16 +191,27 @@
 
         .selector {
             position: absolute;
-            top: 30px;
+            top: 15px;
             left: 50%;
             transform: translateX(-50%);
             width: 0;
             height: 0;
             border-left: 15px solid transparent;
             border-right: 15px solid transparent;
-            border-top: 25px solid #f72585;
-            filter: drop-shadow(0 5px 15px rgba(247, 37, 133, 0.4));
+            border-top: 25px solid #D93954;
+            filter: drop-shadow(0 5px 15px rgba(217, 57, 84, 0.4));
             z-index: 100;
+            transition: transform 0.15s ease-out;
+        }
+
+        .selector.shaking {
+            animation: arrowShake 0.15s ease-in-out infinite;
+        }
+
+        @keyframes arrowShake {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            25% { transform: translateX(-50%) translateY(-3px); }
+            75% { transform: translateX(-50%) translateY(3px); }
         }
 
         .reel {
@@ -151,21 +225,45 @@
         }
 
         .card {
-            min-width: 250px;
-            width: 250px;
-            height: 280px;
+            min-width: 180px;
+            width: 180px;
+            height: 180px;
             background: white;
             border-radius: 25px;
-            padding: 30px 20px;
+            padding: 20px;
             box-shadow: 0 10px 30px rgba(217, 57, 84, 0.12);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             flex-shrink: 0;
             border: none;
-            transition: all 0.3s ease;
+            transition: transform 0.1s ease-out;
+        }
+
+        .card.under-arrow {
+            transform: scale(1.15);
+        }
+
+        .card.legendary {
+            background: linear-gradient(135deg, #D93954 0%, #F72585 100%);
+            box-shadow: 0 15px 50px rgba(217, 57, 84, 0.5), 0 0 30px rgba(247, 37, 133, 0.3);
+            border: 2px solid rgba(255, 215, 0, 0.5);
+        }
+
+        .card.legendary .card-text {
+            color: white;
+        }
+
+        .card.legendary .card-emoji {
+            filter: drop-shadow(0 5px 15px rgba(255, 215, 0, 0.5));
+            animation: legendaryPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes legendaryPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
 
         .card.winner {
@@ -173,6 +271,12 @@
             transform: scale(1.1);
             box-shadow: 0 0 50px rgba(217, 57, 84, 0.5), 0 15px 40px rgba(217, 57, 84, 0.2);
             background: white;
+        }
+
+        .card.winner.legendary {
+            border: 3px solid #FFD700;
+            background: linear-gradient(135deg, #D93954 0%, #F72585 100%);
+            box-shadow: 0 0 60px rgba(255, 215, 0, 0.6), 0 15px 50px rgba(247, 37, 133, 0.4);
         }
 
         .modal-overlay {
@@ -200,7 +304,7 @@
         .modal-card {
             background: white;
             border-radius: 40px;
-            padding: 70px 50px;
+            padding: 70px 50px 30px;
             box-shadow: 0 25px 70px rgba(217, 57, 84, 0.3);
             display: flex;
             flex-direction: column;
@@ -213,6 +317,37 @@
             transform: scale(0.8);
             transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             position: relative;
+        }
+
+        .modal-card.legendary {
+            background: linear-gradient(135deg, #D93954 0%, #F72585 100%);
+            border: 4px solid #FFD700;
+            box-shadow: 0 30px 80px rgba(255, 215, 0, 0.4), 0 0 50px rgba(247, 37, 133, 0.5);
+        }
+
+        .modal-card.legendary::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.15) 0%, transparent 70%);
+            animation: rotate 8s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .modal-card.legendary .modal-text {
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-card.legendary .modal-emoji {
+            filter: drop-shadow(0 10px 30px rgba(255, 215, 0, 0.5));
         }
 
         .modal-overlay.visible .modal-card {
@@ -236,6 +371,103 @@
             font-weight: 800;
             text-align: center;
             line-height: 1.5;
+        }
+
+        .modal-btn {
+            background: #D93954;
+            color: white;
+            border: none;
+            padding: 18px 45px;
+            font-size: 0.95rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(217, 57, 84, 0.3);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: capitalize;
+            margin-top: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .modal-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(217, 57, 84, 0.4);
+        }
+
+        .modal-card.legendary .modal-btn {
+            background: white;
+            color: #D93954;
+        }
+
+        .legendary-reveal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.3) 0%, rgba(217, 57, 84, 0.5) 100%);
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            animation: legendaryFlash 1.5s ease-out;
+        }
+
+        @keyframes legendaryFlash {
+            0% { opacity: 0; }
+            10% { opacity: 1; }
+            30% { opacity: 0.8; }
+            50% { opacity: 1; }
+            70% { opacity: 0.5; }
+            100% { opacity: 0; }
+        }
+
+        .sparkle {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: #FFD700;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1001;
+            box-shadow: 0 0 10px #FFD700;
+        }
+
+        .card.winner.legendary {
+            animation: legendaryWinnerPulse 1s ease-in-out 3;
+        }
+
+        @keyframes legendaryWinnerPulse {
+            0%, 100% { 
+                transform: scale(1.1);
+                box-shadow: 0 0 60px rgba(255, 215, 0, 0.6), 0 15px 50px rgba(247, 37, 133, 0.4);
+            }
+            50% { 
+                transform: scale(1.2);
+                box-shadow: 0 0 80px rgba(255, 215, 0, 0.9), 0 20px 60px rgba(247, 37, 133, 0.6);
+            }
+        }
+
+        .modal-card.legendary {
+            animation: legendaryModalEntry 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+        }
+
+        @keyframes legendaryModalEntry {
+            0% {
+                transform: scale(0) rotate(-180deg);
+                opacity: 0;
+            }
+            60% {
+                transform: scale(1.1) rotate(10deg);
+            }
+            80% {
+                transform: scale(0.95) rotate(-5deg);
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
         }
 
         .modal-close {
@@ -266,6 +498,7 @@
             font-weight: 700;
             text-align: center;
             line-height: 1.4;
+            display: none;
         }
 
         .controls {
@@ -315,10 +548,10 @@
 
         @media (max-width: 768px) {
             .card {
-                min-width: 200px;
-                width: 200px;
-                height: 240px;
-                padding: 25px 15px;
+                min-width: 150px;
+                width: 150px;
+                height: 150px;
+                padding: 15px;
             }
 
             .card-emoji {
@@ -344,10 +577,10 @@
 
         @media (max-width: 480px) {
             .card {
-                min-width: 160px;
-                width: 160px;
-                height: 220px;
-                padding: 20px 10px;
+                min-width: 120px;
+                width: 120px;
+                height: 120px;
+                padding: 10px;
             }
 
             .card-emoji {
@@ -374,12 +607,17 @@
 </head>
 <body>
     <div class="hearts" id="hearts"></div>
+    <div class="legendary-reveal" id="legendaryReveal"></div>
+    
+    <div class="music-toggle" id="musicToggle" title="Включить музыку">🎵</div>
+    <div class="branding">Big Media Moscow</div>
     
     <div class="modal-overlay" id="modalOverlay">
         <button class="modal-close" id="modalClose">×</button>
-        <div class="modal-card">
+        <div class="modal-card" id="modalCard">
             <div class="modal-emoji" id="modalEmoji"></div>
             <div class="modal-text" id="modalText"></div>
+            <button class="modal-btn" id="modalRefreshBtn">Открыть ещё</button>
         </div>
     </div>
     
@@ -403,30 +641,305 @@
 
     <script>
         const valentines = [
-            { emoji: '🚀', text: 'С тобой любой проект взлетает!' },
-            { emoji: '💻', text: 'Ты — лучший тимлид в галактике!' },
-            { emoji: '🎨', text: 'Твой креатив просто космос!' },
-            { emoji: '📊', text: 'С твоей аналитикой всё под контролем!' },
-            { emoji: '✨', text: 'Твои идеи — чистая магия!' },
-            { emoji: '🔥', text: 'Ты делаешь огненный контент!' },
-            { emoji: '⚡', text: 'Твоя скорость работы впечатляет!' },
-            { emoji: '🎯', text: 'Ты всегда попадаешь в цель!' },
-            { emoji: '💡', text: 'Твои решения гениальны!' },
-            { emoji: '🏆', text: 'С тобой мы чемпионы!' },
-            { emoji: '🎬', text: 'Твой монтаж — шедевр!' },
-            { emoji: '📱', text: 'Лучший SMM-щик на свете!' },
-            { emoji: '🎪', text: 'Ты создаёшь настоящее шоу!' },
-            { emoji: '🌟', text: 'Ты звезда нашего агентства!' },
-            { emoji: '🎭', text: 'Твоя подача — высший класс!' },
-            { emoji: '🎨', text: 'Твой дизайн вдохновляет всех!' },
-            { emoji: '💼', text: 'С тобой работать — одно удовольствие!' },
-            { emoji: '🎉', text: 'Ты делаешь каждый день праздником!' },
-            { emoji: '🌈', text: 'Ты добавляешь красок в наши проекты!' },
-            { emoji: '💪', text: 'Ты — сила нашей команды!' }
+            { emoji: '🚀', text: 'С тобой любой черновик превращается в релиз.', rarity: 'common' },
+            { emoji: '💡', text: 'Ты тот самый инсайт, который все искали.', rarity: 'common' },
+            { emoji: '🔥', text: 'Ты разгоняешь идеи быстрее утреннего кофе.', rarity: 'common' },
+            { emoji: '⚡', text: 'С тобой даже хаос выглядит как стратегия.', rarity: 'common' },
+            { emoji: '🎯', text: 'Ты попадаешь прямо в сердечко. Без ретаргета.', rarity: 'common' },
+            { emoji: '💬', text: 'Ты тот самый комментарий, который всё меняет.', rarity: 'common' },
+            { emoji: '✨', text: 'С тобой любое «ну такое» становится «вау».', rarity: 'common' },
+            { emoji: '🧠', text: 'Ты апгрейдишь реальность до версии 2.0.', rarity: 'common' },
+            { emoji: '🌟', text: 'Ты наш встроенный режим «делать красиво».', rarity: 'common' },
+            { emoji: '🎬', text: 'С тобой каждый день как запуск. Волнительно и по любви.', rarity: 'common' },
+            { emoji: '🔮', text: 'Ты видишь тренды раньше остальных.', rarity: 'common' },
+            { emoji: '💎', text: 'Ты тот самый элемент, без которого пазл не сходится.', rarity: 'common' },
+            { emoji: '🎉', text: 'С тобой любой день чуть больше праздник.', rarity: 'common' },
+            { emoji: '🚀', text: 'Ты превращаешь «страшно» в «погнали».', rarity: 'common' },
+            { emoji: '🔥', text: 'Ты добавляешь огня и не выгораешь. Легенда.', rarity: 'common' },
+            { emoji: '💫', text: 'Ты тот самый спецэффект, который усиливает всё.', rarity: 'common' },
+            { emoji: '🎵', text: 'С тобой всё звучит как финальный микс, а не демо.', rarity: 'common' },
+            { emoji: '🌈', text: 'Ты добавляешь цвета даже в самые серые правки.', rarity: 'common' },
+            { emoji: '💪', text: 'Ты энергия, которую невозможно заскроллить.', rarity: 'common' },
+            { emoji: '📡', text: 'Ты всегда на той самой частоте, где рождается магия.', rarity: 'common' },
+            { emoji: '⭐', text: 'С тобой хочется делать ещё лучше, даже когда уже классно.', rarity: 'common' },
+            { emoji: '🔥', text: 'Ты наш легальный источник вдохновения.', rarity: 'common' },
+            { emoji: '🎯', text: 'Ты знаешь, когда пора нажать publish.', rarity: 'common' },
+            { emoji: '💌', text: 'С тобой всё делается не просто так, а по любви.', rarity: 'common' },
+            { emoji: '🖤', text: 'Ты тот самый match, который случился идеально.', rarity: 'common' },
+            // LEGENDARY CARDS
+            { emoji: '👑', text: 'Ты не просто легенда. Ты уровень, к которому все тянутся.', rarity: 'legendary' },
+            { emoji: '💎', text: 'Ты наша редкость. Уникальный. Незаменимый. По любви.', rarity: 'legendary' }
         ];
 
         let currentValentine = null;
         let isSpinning = false;
+        let winnerValentine = null; // Store the actual winner card data
+        let backgroundMusic = null;
+        let musicPlaying = false;
+
+        // Audio Context for sound effects
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        let audioContext;
+
+        function initAudio() {
+            console.log('initAudio called');
+            if (!audioContext) {
+                audioContext = new AudioContext();
+                console.log('AudioContext created, state:', audioContext.state);
+            }
+            if (!musicPlaying) {
+                console.log('Starting background music...');
+                startBackgroundMusic();
+                musicPlaying = true;
+                const toggle = document.getElementById('musicToggle');
+                toggle.classList.add('playing');
+                toggle.textContent = '🔊';
+                toggle.title = 'Выключить музыку';
+            }
+        }
+
+        function toggleMusic() {
+            console.log('toggleMusic called');
+            if (!audioContext) {
+                initAudio();
+            } else {
+                if (audioContext.state === 'running') {
+                    audioContext.suspend();
+                    musicPlaying = false;
+                    const toggle = document.getElementById('musicToggle');
+                    toggle.classList.remove('playing');
+                    toggle.textContent = '🔇';
+                    toggle.title = 'Включить музыку';
+                } else {
+                    audioContext.resume();
+                    if (!musicPlaying) {
+                        startBackgroundMusic();
+                        musicPlaying = true;
+                    }
+                    const toggle = document.getElementById('musicToggle');
+                    toggle.classList.add('playing');
+                    toggle.textContent = '🔊';
+                    toggle.title = 'Выключить музыку';
+                }
+            }
+        }
+
+        function startBackgroundMusic() {
+            // Cheerful, romantic Valentine's melody
+            const melody = [
+                { note: 523.25, duration: 0.6 }, // C5
+                { note: 659.25, duration: 0.6 }, // E5
+                { note: 783.99, duration: 0.4 }, // G5
+                { note: 880.00, duration: 0.8 }, // A5
+                { note: 783.99, duration: 0.4 }, // G5
+                { note: 659.25, duration: 0.6 }, // E5
+                { note: 587.33, duration: 0.6 }, // D5
+                { note: 659.25, duration: 0.6 }, // E5
+                { note: 523.25, duration: 1.0 }, // C5
+                { note: 587.33, duration: 0.4 }, // D5
+                { note: 659.25, duration: 0.6 }, // E5
+                { note: 783.99, duration: 0.8 }, // G5
+                { note: 659.25, duration: 0.6 }, // E5
+                { note: 523.25, duration: 1.2 }, // C5
+            ];
+
+            function playMelody(startTime) {
+                let time = startTime;
+                
+                melody.forEach((note, index) => {
+                    // Main melody note
+                    const osc = audioContext.createOscillator();
+                    const gain = audioContext.createGain();
+                    
+                    osc.connect(gain);
+                    gain.connect(audioContext.destination);
+                    
+                    osc.frequency.value = note.note;
+                    osc.type = 'sine';
+                    
+                    // Gentle envelope
+                    gain.gain.setValueAtTime(0, time);
+                    gain.gain.linearRampToValueAtTime(0.015, time + 0.05);
+                    gain.gain.setValueAtTime(0.015, time + note.duration - 0.1);
+                    gain.gain.linearRampToValueAtTime(0, time + note.duration);
+                    
+                    osc.start(time);
+                    osc.stop(time + note.duration);
+                    
+                    // Add bass note on beats for rhythm
+                    if (index % 4 === 0) {
+                        const bass = audioContext.createOscillator();
+                        const bassGain = audioContext.createGain();
+                        
+                        bass.connect(bassGain);
+                        bassGain.connect(audioContext.destination);
+                        
+                        bass.frequency.value = note.note / 2; // Octave below
+                        bass.type = 'sine';
+                        
+                        bassGain.gain.setValueAtTime(0, time);
+                        bassGain.gain.linearRampToValueAtTime(0.01, time + 0.05);
+                        bassGain.gain.setValueAtTime(0.01, time + note.duration - 0.1);
+                        bassGain.gain.linearRampToValueAtTime(0, time + note.duration);
+                        
+                        bass.start(time);
+                        bass.stop(time + note.duration);
+                    }
+                    
+                    time += note.duration;
+                });
+                
+                // Loop with pause
+                const totalDuration = melody.reduce((sum, note) => sum + note.duration, 0);
+                setTimeout(() => {
+                    if (audioContext && audioContext.state === 'running' && musicPlaying) {
+                        playMelody(audioContext.currentTime + 1.0);
+                    }
+                }, (totalDuration + 1.0) * 1000);
+            }
+            
+            // Start melody
+            if (audioContext && audioContext.state === 'running') {
+                playMelody(audioContext.currentTime + 0.3);
+            }
+        }
+
+        function playSpinSound() {
+            initAudio();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.setValueAtTime(200, audioContext.currentTime);
+            oscillator.frequency.exponentialRampToValueAtTime(100, audioContext.currentTime + 0.3);
+            
+            gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+            
+            oscillator.start();
+            oscillator.stop(audioContext.currentTime + 0.3);
+        }
+
+        function playTickSound() {
+            initAudio();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.value = 1200;
+            oscillator.type = 'sine';
+            
+            gainNode.gain.setValueAtTime(0.02, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.03);
+            
+            oscillator.start();
+            oscillator.stop(audioContext.currentTime + 0.03);
+        }
+
+        function playWinSound() {
+            initAudio();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.setValueAtTime(400, audioContext.currentTime);
+            oscillator.frequency.exponentialRampToValueAtTime(800, audioContext.currentTime + 0.2);
+            oscillator.frequency.exponentialRampToValueAtTime(600, audioContext.currentTime + 0.4);
+            
+            gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.4);
+            
+            oscillator.start();
+            oscillator.stop(audioContext.currentTime + 0.4);
+        }
+
+        function playLegendarySound() {
+            initAudio();
+            
+            // Epic rising fanfare with multiple layers
+            // Bass note
+            const bass = audioContext.createOscillator();
+            const bassGain = audioContext.createGain();
+            bass.connect(bassGain);
+            bassGain.connect(audioContext.destination);
+            bass.frequency.value = 130.81; // C3
+            bass.type = 'sine';
+            bassGain.gain.setValueAtTime(0.25, audioContext.currentTime);
+            bassGain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 1.5);
+            bass.start();
+            bass.stop(audioContext.currentTime + 1.5);
+            
+            // Epic chord progression with shimmer
+            const chord1 = [261.63, 329.63, 392.00]; // C E G
+            const chord2 = [293.66, 369.99, 440.00]; // D F# A
+            const chord3 = [329.63, 392.00, 493.88]; // E G B
+            
+            [chord1, chord2, chord3].forEach((frequencies, chordIndex) => {
+                frequencies.forEach((freq, noteIndex) => {
+                    setTimeout(() => {
+                        const osc = audioContext.createOscillator();
+                        const gain = audioContext.createGain();
+                        
+                        osc.connect(gain);
+                        gain.connect(audioContext.destination);
+                        
+                        osc.frequency.value = freq;
+                        osc.type = 'triangle';
+                        
+                        const startTime = audioContext.currentTime;
+                        gain.gain.setValueAtTime(0.12, startTime);
+                        gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.8);
+                        
+                        osc.start(startTime);
+                        osc.stop(startTime + 0.8);
+                    }, chordIndex * 250 + noteIndex * 30);
+                });
+            });
+            
+            // Sparkle sounds
+            for (let i = 0; i < 8; i++) {
+                setTimeout(() => {
+                    const sparkle = audioContext.createOscillator();
+                    const sparkleGain = audioContext.createGain();
+                    
+                    sparkle.connect(sparkleGain);
+                    sparkleGain.connect(audioContext.destination);
+                    
+                    sparkle.frequency.value = 1500 + Math.random() * 1000;
+                    sparkle.type = 'sine';
+                    
+                    sparkleGain.gain.setValueAtTime(0.08, audioContext.currentTime);
+                    sparkleGain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.2);
+                    
+                    sparkle.start();
+                    sparkle.stop(audioContext.currentTime + 0.2);
+                }, i * 150);
+            }
+        }
+
+        function playModalOpenSound() {
+            initAudio();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.setValueAtTime(600, audioContext.currentTime);
+            oscillator.frequency.exponentialRampToValueAtTime(1200, audioContext.currentTime + 0.15);
+            
+            gainNode.gain.setValueAtTime(0.15, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.15);
+            
+            oscillator.start();
+            oscillator.stop(audioContext.currentTime + 0.15);
+        }
 
         function getRandomValentine() {
             let newValentine;
@@ -452,12 +965,91 @@
             }
         }
 
+        function createSparkles() {
+            const sparkleCount = 50;
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+
+            for (let i = 0; i < sparkleCount; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.className = 'sparkle';
+                    
+                    const angle = (Math.PI * 2 * i) / sparkleCount;
+                    const distance = 50 + Math.random() * 200;
+                    const endX = centerX + Math.cos(angle) * distance;
+                    const endY = centerY + Math.sin(angle) * distance;
+                    
+                    sparkle.style.left = centerX + 'px';
+                    sparkle.style.top = centerY + 'px';
+                    
+                    document.body.appendChild(sparkle);
+                    
+                    // Animate sparkle
+                    sparkle.animate([
+                        { 
+                            left: centerX + 'px', 
+                            top: centerY + 'px', 
+                            opacity: 1,
+                            transform: 'scale(0)'
+                        },
+                        { 
+                            left: endX + 'px', 
+                            top: endY + 'px', 
+                            opacity: 0,
+                            transform: 'scale(1.5)'
+                        }
+                    ], {
+                        duration: 1000 + Math.random() * 500,
+                        easing: 'ease-out'
+                    });
+                    
+                    setTimeout(() => sparkle.remove(), 1500);
+                }, i * 10);
+            }
+        }
+
+        function showLegendaryReveal() {
+            const reveal = document.getElementById('legendaryReveal');
+            reveal.style.opacity = '1';
+            reveal.style.animation = 'legendaryFlash 1.5s ease-out';
+            
+            // Create sparkles
+            createSparkles();
+            
+            // Reset animation
+            setTimeout(() => {
+                reveal.style.opacity = '0';
+                reveal.style.animation = 'none';
+            }, 1500);
+        }
+
+        function updateCardUnderArrow(reel) {
+            const cards = reel.querySelectorAll('.card');
+            const reelRect = reel.getBoundingClientRect();
+            const screenCenter = window.innerWidth / 2;
+            
+            cards.forEach(card => {
+                const cardRect = card.getBoundingClientRect();
+                const cardCenter = cardRect.left + (cardRect.width / 2);
+                const distance = Math.abs(cardCenter - screenCenter);
+                
+                // If card center is within 100px of screen center, it's under arrow
+                if (distance < 100) {
+                    card.classList.add('under-arrow');
+                } else {
+                    card.classList.remove('under-arrow');
+                }
+            });
+        }
+
         function spin() {
             if (isSpinning) return;
             isSpinning = true;
 
             const reel = document.getElementById('reel');
             const refreshBtn = document.getElementById('refreshBtn');
+            const arrow = document.querySelector('.selector');
 
             // Hide button
             refreshBtn.classList.remove('visible');
@@ -473,13 +1065,19 @@
             const totalCards = 40;
             const winnerIndex = 20; // Middle position
 
+            // Get the winner valentine FIRST
+            winnerValentine = getRandomValentine();
+
             for (let i = 0; i < totalCards; i++) {
                 const valentine = (i === winnerIndex) 
-                    ? getRandomValentine() 
+                    ? winnerValentine  // Use the pre-selected winner
                     : valentines[Math.floor(Math.random() * valentines.length)];
 
                 const card = document.createElement('div');
                 card.className = 'card';
+                if (valentine.rarity === 'legendary') {
+                    card.classList.add('legendary');
+                }
                 card.innerHTML = `
                     <div class="card-emoji">${valentine.emoji}</div>
                     <div class="card-text">${valentine.text}</div>
@@ -495,43 +1093,118 @@
             reel.offsetHeight;
 
             // Calculate winning position
-            const cardWidth = window.innerWidth <= 768 ? (window.innerWidth <= 480 ? 160 : 200) : 250;
+            const cardWidth = window.innerWidth <= 768 ? (window.innerWidth <= 480 ? 120 : 150) : 180;
             const gap = 25;
             const cardAndGap = cardWidth + gap;
             
-            // We want the winner card centered, so calculate offset
-            const offset = winnerIndex * cardAndGap;
+            // IMPORTANT: reel has padding: 0 50vw which adds 50vw to the left!
+            const reelPadding = window.innerWidth * 0.5; // 50vw in pixels
+            
+            // Calculate offset to center the winning card under the arrow
+            // Position of winning card's left edge (including padding)
+            const winnerLeftEdge = reelPadding + (winnerIndex * cardAndGap);
+            // Position of winning card's center
+            const winnerCenter = winnerLeftEdge + (cardWidth / 2);
+            // Screen center where arrow is
+            const screenCenter = window.innerWidth / 2;
+            // How much we need to move to align winner center with screen center
+            const offset = winnerCenter - screenCenter;
 
             // Start animation
             setTimeout(() => {
+                // Start arrow shaking
+                arrow.classList.add('shaking');
+                
+                // Add spinning class for card bounce
+                reel.classList.add('spinning');
+                
+                // Play spin sound
+                playSpinSound();
+                
+                // Track card under arrow and play tick sounds
+                let lastTickedCard = null;
+                const trackInterval = setInterval(() => {
+                    const cards = reel.querySelectorAll('.card');
+                    let currentCard = null;
+                    
+                    cards.forEach(card => {
+                        const cardRect = card.getBoundingClientRect();
+                        const cardCenter = cardRect.left + (cardRect.width / 2);
+                        const screenCenter = window.innerWidth / 2;
+                        const distance = Math.abs(cardCenter - screenCenter);
+                        
+                        if (distance < 100) {
+                            card.classList.add('under-arrow');
+                            currentCard = card;
+                        } else {
+                            card.classList.remove('under-arrow');
+                        }
+                    });
+                    
+                    // Play tick sound when a new card enters under arrow
+                    if (currentCard && currentCard !== lastTickedCard) {
+                        playTickSound();
+                        lastTickedCard = currentCard;
+                    }
+                }, 50);
+                
                 reel.style.transition = 'transform 4s cubic-bezier(0.15, 0.5, 0.3, 1)';
                 reel.style.transform = `translateX(-${offset}px) translateY(-50%)`;
 
                 // After animation
                 setTimeout(() => {
-                    // Mark winner
+                    // Stop tracking
+                    clearInterval(trackInterval);
+                    
+                    // Stop arrow shaking
+                    arrow.classList.remove('shaking');
+                    
+                    // Stop card bouncing
+                    reel.classList.remove('spinning');
+                    
+                    // Remove all under-arrow classes
                     const allCards = reel.querySelectorAll('.card');
+                    allCards.forEach(c => c.classList.remove('under-arrow'));
+                    
+                    // Mark winner
                     if (allCards[winnerIndex]) {
                         allCards[winnerIndex].classList.add('winner');
+                        playWinSound();
+                    }
+
+                    // Check if legendary and trigger special animation
+                    if (winnerValentine.rarity === 'legendary') {
+                        showLegendaryReveal();
+                        playLegendarySound();
                     }
 
                     // Show modal with winner
                     setTimeout(() => {
+                        playModalOpenSound();
                         showModal();
                         refreshBtn.classList.add('visible');
                         isSpinning = false;
-                    }, 500);
+                    }, winnerValentine.rarity === 'legendary' ? 1500 : 500);
                 }, 4000);
             }, 100);
         }
 
         function showModal() {
             const modal = document.getElementById('modalOverlay');
+            const modalCard = document.getElementById('modalCard');
             const modalEmoji = document.getElementById('modalEmoji');
             const modalText = document.getElementById('modalText');
 
-            modalEmoji.textContent = currentValentine.emoji;
-            modalText.textContent = currentValentine.text;
+            // Use the actual winner card data
+            modalEmoji.textContent = winnerValentine.emoji;
+            modalText.textContent = winnerValentine.text;
+
+            // Add legendary class if it's a legendary card
+            if (winnerValentine.rarity === 'legendary') {
+                modalCard.classList.add('legendary');
+            } else {
+                modalCard.classList.remove('legendary');
+            }
 
             modal.classList.add('visible');
         }
@@ -552,10 +1225,24 @@
             closeModal();
             setTimeout(spin, 300);
         });
+        document.getElementById('modalRefreshBtn').addEventListener('click', () => {
+            closeModal();
+            setTimeout(spin, 300);
+        });
         document.getElementById('modalClose').addEventListener('click', closeModal);
         document.getElementById('modalOverlay').addEventListener('click', (e) => {
             if (e.target.id === 'modalOverlay') {
                 closeModal();
+            }
+        });
+        document.getElementById('musicToggle').addEventListener('click', toggleMusic);
+
+        // Auto-start music on first click anywhere (except music toggle)
+        let musicStarted = false;
+        document.addEventListener('click', function(e) {
+            if (!musicStarted && e.target.id !== 'musicToggle') {
+                initAudio();
+                musicStarted = true;
             }
         });
 
@@ -563,4 +1250,3 @@
     </script>
 </body>
 </html>
-
