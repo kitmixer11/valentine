@@ -8,11 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Montserrat', sans-serif;
@@ -32,18 +28,14 @@
             left: 0;
             width: 100%;
             height: 60%;
-            background: 
+            background:
                 radial-gradient(ellipse at center bottom, #FF5580 0%, transparent 50%),
                 radial-gradient(ellipse at center bottom, #FFB6D9 30%, transparent 70%);
             pointer-events: none;
             opacity: 0.6;
         }
 
-        .container {
-            text-align: center;
-            padding: 20px;
-            width: 100%;
-        }
+        .container { text-align: center; padding: 20px; width: 100%; }
 
         .welcome-screen h1 {
             color: #D93954;
@@ -94,19 +86,14 @@
             transition: width 0.6s, height 0.6s;
         }
 
-        .btn:hover::before {
-            width: 300px;
-            height: 300px;
-        }
+        .btn:hover::before { width: 300px; height: 300px; }
 
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 35px rgba(217, 57, 84, 0.4);
         }
 
-        .hidden {
-            display: none !important;
-        }
+        .hidden { display: none !important; }
 
         .branding {
             position: fixed;
@@ -151,32 +138,14 @@
             box-shadow: 0 6px 20px rgba(217, 57, 84, 0.3);
         }
 
-        .music-toggle.playing {
-            background: rgba(217, 57, 84, 0.1);
-        }
+        .music-toggle.playing { background: rgba(217, 57, 84, 0.1); }
 
         @media (max-width: 480px) {
-            .branding {
-                font-size: 0.65rem;
-                bottom: 15px;
-                right: 15px;
-            }
-
-            .music-toggle {
-                width: 45px;
-                height: 45px;
-                font-size: 1.3rem;
-                top: 15px;
-                right: 15px;
-            }
+            .branding { font-size: 0.65rem; bottom: 15px; right: 15px; }
+            .music-toggle { width: 45px; height: 45px; font-size: 1.3rem; top: 15px; right: 15px; }
         }
 
-        .case-opening {
-            position: relative;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        .case-opening { position: relative; width: 100%; max-width: 1200px; margin: 0 auto; }
 
         .viewport {
             position: relative;
@@ -204,9 +173,7 @@
             transition: transform 0.15s ease-out;
         }
 
-        .selector.shaking {
-            animation: arrowShake 0.15s ease-in-out infinite;
-        }
+        .selector.shaking { animation: arrowShake 0.15s ease-in-out infinite; }
 
         @keyframes arrowShake {
             0%, 100% { transform: translateX(-50%) translateY(0); }
@@ -242,9 +209,7 @@
             transition: transform 0.1s ease-out;
         }
 
-        .card.under-arrow {
-            transform: scale(1.15);
-        }
+        .card.under-arrow { transform: scale(1.15); }
 
         .card.legendary {
             background: linear-gradient(135deg, #D93954 0%, #F72585 100%);
@@ -252,9 +217,7 @@
             border: 2px solid rgba(255, 215, 0, 0.5);
         }
 
-        .card.legendary .card-text {
-            color: white;
-        }
+        .card.legendary .card-text { color: white; }
 
         .card.legendary .card-emoji {
             filter: drop-shadow(0 5px 15px rgba(255, 215, 0, 0.5));
@@ -281,10 +244,8 @@
 
         .modal-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background: rgba(255, 182, 217, 0.95);
             backdrop-filter: blur(10px);
             display: flex;
@@ -296,10 +257,7 @@
             transition: opacity 0.5s ease;
         }
 
-        .modal-overlay.visible {
-            opacity: 1;
-            pointer-events: all;
-        }
+        .modal-overlay.visible { opacity: 1; pointer-events: all; }
 
         .modal-card {
             background: white;
@@ -336,23 +294,16 @@
             animation: rotate 8s linear infinite;
         }
 
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        @keyframes rotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         .modal-card.legendary .modal-text {
             color: white;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
-        .modal-card.legendary .modal-emoji {
-            filter: drop-shadow(0 10px 30px rgba(255, 215, 0, 0.5));
-        }
+        .modal-card.legendary .modal-emoji { filter: drop-shadow(0 10px 30px rgba(255, 215, 0, 0.5)); }
 
-        .modal-overlay.visible .modal-card {
-            transform: scale(1);
-        }
+        .modal-overlay.visible .modal-card { transform: scale(1); }
 
         .modal-emoji {
             font-size: 7rem;
@@ -360,10 +311,7 @@
             filter: drop-shadow(0 10px 25px rgba(217, 57, 84, 0.25));
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
 
         .modal-text {
             color: #D93954;
@@ -391,22 +339,14 @@
             z-index: 1;
         }
 
-        .modal-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(217, 57, 84, 0.4);
-        }
+        .modal-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(217, 57, 84, 0.4); }
 
-        .modal-card.legendary .modal-btn {
-            background: white;
-            color: #D93954;
-        }
+        .modal-card.legendary .modal-btn { background: white; color: #D93954; }
 
         .legendary-reveal {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background: radial-gradient(circle, rgba(255, 215, 0, 0.3) 0%, rgba(217, 57, 84, 0.5) 100%);
             z-index: 999;
             opacity: 0;
@@ -434,40 +374,26 @@
             box-shadow: 0 0 10px #FFD700;
         }
 
-        .card.winner.legendary {
-            animation: legendaryWinnerPulse 1s ease-in-out 3;
-        }
+        .card.winner.legendary { animation: legendaryWinnerPulse 1s ease-in-out 3; }
 
         @keyframes legendaryWinnerPulse {
-            0%, 100% { 
+            0%, 100% {
                 transform: scale(1.1);
                 box-shadow: 0 0 60px rgba(255, 215, 0, 0.6), 0 15px 50px rgba(247, 37, 133, 0.4);
             }
-            50% { 
+            50% {
                 transform: scale(1.2);
                 box-shadow: 0 0 80px rgba(255, 215, 0, 0.9), 0 20px 60px rgba(247, 37, 133, 0.6);
             }
         }
 
-        .modal-card.legendary {
-            animation: legendaryModalEntry 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
-        }
+        .modal-card.legendary { animation: legendaryModalEntry 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards; }
 
         @keyframes legendaryModalEntry {
-            0% {
-                transform: scale(0) rotate(-180deg);
-                opacity: 0;
-            }
-            60% {
-                transform: scale(1.1) rotate(10deg);
-            }
-            80% {
-                transform: scale(0.95) rotate(-5deg);
-            }
-            100% {
-                transform: scale(1) rotate(0deg);
-                opacity: 1;
-            }
+            0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+            60% { transform: scale(1.1) rotate(10deg); }
+            80% { transform: scale(0.95) rotate(-5deg); }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
         }
 
         .modal-close {
@@ -483,14 +409,9 @@
             transition: opacity 0.3s ease;
         }
 
-        .modal-close:hover {
-            opacity: 1;
-        }
+        .modal-close:hover { opacity: 1; }
 
-        .card-emoji {
-            font-size: 4rem;
-            user-select: none;
-        }
+        .card-emoji { font-size: 4rem; user-select: none; }
 
         .card-text {
             color: #D93954;
@@ -501,117 +422,54 @@
             display: none;
         }
 
-        .controls {
-            margin-top: 30px;
-        }
+        .controls { margin-top: 30px; }
 
-        .refresh-btn {
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.5s ease;
-        }
+        .refresh-btn { opacity: 0; pointer-events: none; transition: opacity 0.5s ease; }
 
-        .refresh-btn.visible {
-            opacity: 1;
-            pointer-events: all;
-        }
+        .refresh-btn.visible { opacity: 1; pointer-events: all; }
 
         .hearts {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             pointer-events: none;
             z-index: -1;
         }
 
-        .heart {
-            position: absolute;
-            font-size: 30px;
-            animation: float 4s ease-in infinite;
-        }
+        .heart { position: absolute; font-size: 30px; animation: float 4s ease-in infinite; }
 
         @keyframes float {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10%, 90% {
-                opacity: 0.9;
-            }
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-                opacity: 0;
-            }
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10%, 90% { opacity: 0.9; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
         }
 
         @media (max-width: 768px) {
-            .card {
-                min-width: 150px;
-                width: 150px;
-                height: 150px;
-                padding: 15px;
-            }
-
-            .card-emoji {
-                font-size: 3rem;
-            }
-
-            .card-text {
-                font-size: 1rem;
-            }
-
-            .modal-card {
-                padding: 50px 30px;
-            }
-
-            .modal-emoji {
-                font-size: 5rem;
-            }
-
-            .modal-text {
-                font-size: 1.5rem;
-            }
+            .card { min-width: 150px; width: 150px; height: 150px; padding: 15px; }
+            .card-emoji { font-size: 3rem; }
+            .card-text { font-size: 1rem; }
+            .modal-card { padding: 50px 30px; }
+            .modal-emoji { font-size: 5rem; }
+            .modal-text { font-size: 1.5rem; }
         }
 
         @media (max-width: 480px) {
-            .card {
-                min-width: 120px;
-                width: 120px;
-                height: 120px;
-                padding: 10px;
-            }
-
-            .card-emoji {
-                font-size: 2.5rem;
-            }
-
-            .card-text {
-                font-size: 0.9rem;
-            }
-
-            .modal-card {
-                padding: 40px 25px;
-            }
-
-            .modal-emoji {
-                font-size: 4rem;
-            }
-
-            .modal-text {
-                font-size: 1.2rem;
-            }
+            .card { min-width: 120px; width: 120px; height: 120px; padding: 10px; }
+            .card-emoji { font-size: 2.5rem; }
+            .card-text { font-size: 0.9rem; }
+            .modal-card { padding: 40px 25px; }
+            .modal-emoji { font-size: 4rem; }
+            .modal-text { font-size: 1.2rem; }
         }
     </style>
 </head>
 <body>
     <div class="hearts" id="hearts"></div>
     <div class="legendary-reveal" id="legendaryReveal"></div>
-    
+
     <div class="music-toggle" id="musicToggle" title="Включить музыку">🎵</div>
     <div class="branding">Big Media Moscow</div>
-    
+
     <div class="modal-overlay" id="modalOverlay">
         <button class="modal-close" id="modalClose">×</button>
         <div class="modal-card" id="modalCard">
@@ -620,7 +478,7 @@
             <button class="modal-btn" id="modalRefreshBtn">Открыть ещё</button>
         </div>
     </div>
-    
+
     <div class="container">
         <div class="welcome-screen" id="welcomeScreen">
             <h1>Вам валентинка!</h1>
@@ -666,279 +524,305 @@
             { emoji: '🎯', text: 'Ты знаешь, когда пора нажать publish.', rarity: 'common' },
             { emoji: '💌', text: 'С тобой всё делается не просто так, а по любви.', rarity: 'common' },
             { emoji: '🖤', text: 'Ты тот самый match, который случился идеально.', rarity: 'common' },
-            // LEGENDARY CARDS
+            // LEGENDARY
             { emoji: '👑', text: 'Ты не просто легенда. Ты уровень, к которому все тянутся.', rarity: 'legendary' },
             { emoji: '💎', text: 'Ты наша редкость. Уникальный. Незаменимый. По любви.', rarity: 'legendary' }
         ];
 
         let currentValentine = null;
         let isSpinning = false;
-        let winnerValentine = null; // Store the actual winner card data
-        let backgroundMusic = null;
+        let winnerValentine = null;
+
+        // Audio
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        let audioContext = null;
+
         let musicPlaying = false;
+        let musicStarted = false;
 
-        // Audio Context for sound effects
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        let audioContext;
+        // Prevent background music loop stacking
+        let musicLoopToken = 0;
 
-        function initAudio() {
-            console.log('initAudio called');
+        async function ensureAudioContextRunning() {
             if (!audioContext) {
-                audioContext = new AudioContext();
-                console.log('AudioContext created, state:', audioContext.state);
+                audioContext = new AudioContextClass();
             }
-            if (!musicPlaying) {
-                console.log('Starting background music...');
-                startBackgroundMusic();
-                musicPlaying = true;
-                const toggle = document.getElementById('musicToggle');
+            if (audioContext.state === 'suspended') {
+                try { await audioContext.resume(); } catch (e) {}
+            }
+        }
+
+        function updateMusicToggleUI(isOn) {
+            const toggle = document.getElementById('musicToggle');
+            if (isOn) {
                 toggle.classList.add('playing');
                 toggle.textContent = '🔊';
                 toggle.title = 'Выключить музыку';
+            } else {
+                toggle.classList.remove('playing');
+                toggle.textContent = '🔇';
+                toggle.title = 'Включить музыку';
             }
         }
 
-        function toggleMusic() {
-            console.log('toggleMusic called');
-            if (!audioContext) {
-                initAudio();
-            } else {
-                if (audioContext.state === 'running') {
-                    audioContext.suspend();
-                    musicPlaying = false;
-                    const toggle = document.getElementById('musicToggle');
-                    toggle.classList.remove('playing');
-                    toggle.textContent = '🔇';
-                    toggle.title = 'Включить музыку';
-                } else {
-                    audioContext.resume();
-                    if (!musicPlaying) {
-                        startBackgroundMusic();
-                        musicPlaying = true;
-                    }
-                    const toggle = document.getElementById('musicToggle');
-                    toggle.classList.add('playing');
-                    toggle.textContent = '🔊';
-                    toggle.title = 'Выключить музыку';
-                }
+        async function initAudio() {
+            await ensureAudioContextRunning();
+            if (!musicPlaying) {
+                musicPlaying = true;
+                startBackgroundMusic();
+                updateMusicToggleUI(true);
             }
+        }
+
+        async function toggleMusic() {
+            if (!audioContext) {
+                // First interaction through toggle should start music
+                await initAudio();
+                musicStarted = true;
+                return;
+            }
+
+            // If currently playing, stop (invalidate loop + suspend)
+            if (musicPlaying) {
+                musicPlaying = false;
+                musicLoopToken++;
+                updateMusicToggleUI(false);
+                try { await audioContext.suspend(); } catch (e) {}
+                return;
+            }
+
+            // Otherwise resume + start loop
+            try { await audioContext.resume(); } catch (e) {}
+            musicPlaying = true;
+            startBackgroundMusic();
+            updateMusicToggleUI(true);
         }
 
         function startBackgroundMusic() {
-            // Cheerful, romantic Valentine's melody
+            // capture token so any previous scheduled loop becomes inert
+            const myToken = ++musicLoopToken;
+
             const melody = [
-                { note: 523.25, duration: 0.6 }, // C5
-                { note: 659.25, duration: 0.6 }, // E5
-                { note: 783.99, duration: 0.4 }, // G5
-                { note: 880.00, duration: 0.8 }, // A5
-                { note: 783.99, duration: 0.4 }, // G5
-                { note: 659.25, duration: 0.6 }, // E5
-                { note: 587.33, duration: 0.6 }, // D5
-                { note: 659.25, duration: 0.6 }, // E5
-                { note: 523.25, duration: 1.0 }, // C5
-                { note: 587.33, duration: 0.4 }, // D5
-                { note: 659.25, duration: 0.6 }, // E5
-                { note: 783.99, duration: 0.8 }, // G5
-                { note: 659.25, duration: 0.6 }, // E5
-                { note: 523.25, duration: 1.2 }, // C5
+                { note: 523.25, duration: 0.6 },
+                { note: 659.25, duration: 0.6 },
+                { note: 783.99, duration: 0.4 },
+                { note: 880.00, duration: 0.8 },
+                { note: 783.99, duration: 0.4 },
+                { note: 659.25, duration: 0.6 },
+                { note: 587.33, duration: 0.6 },
+                { note: 659.25, duration: 0.6 },
+                { note: 523.25, duration: 1.0 },
+                { note: 587.33, duration: 0.4 },
+                { note: 659.25, duration: 0.6 },
+                { note: 783.99, duration: 0.8 },
+                { note: 659.25, duration: 0.6 },
+                { note: 523.25, duration: 1.2 },
             ];
 
             function playMelody(startTime) {
+                if (!audioContext) return;
+                if (myToken !== musicLoopToken) return;
+                if (!musicPlaying) return;
+                if (audioContext.state !== 'running') return;
+
                 let time = startTime;
-                
+
                 melody.forEach((note, index) => {
-                    // Main melody note
+                    if (myToken !== musicLoopToken || !musicPlaying || audioContext.state !== 'running') return;
+
                     const osc = audioContext.createOscillator();
                     const gain = audioContext.createGain();
-                    
+
                     osc.connect(gain);
                     gain.connect(audioContext.destination);
-                    
+
                     osc.frequency.value = note.note;
                     osc.type = 'sine';
-                    
-                    // Gentle envelope
+
                     gain.gain.setValueAtTime(0, time);
                     gain.gain.linearRampToValueAtTime(0.015, time + 0.05);
                     gain.gain.setValueAtTime(0.015, time + note.duration - 0.1);
                     gain.gain.linearRampToValueAtTime(0, time + note.duration);
-                    
+
                     osc.start(time);
                     osc.stop(time + note.duration);
-                    
-                    // Add bass note on beats for rhythm
+
                     if (index % 4 === 0) {
                         const bass = audioContext.createOscillator();
                         const bassGain = audioContext.createGain();
-                        
+
                         bass.connect(bassGain);
                         bassGain.connect(audioContext.destination);
-                        
-                        bass.frequency.value = note.note / 2; // Octave below
+
+                        bass.frequency.value = note.note / 2;
                         bass.type = 'sine';
-                        
+
                         bassGain.gain.setValueAtTime(0, time);
                         bassGain.gain.linearRampToValueAtTime(0.01, time + 0.05);
                         bassGain.gain.setValueAtTime(0.01, time + note.duration - 0.1);
                         bassGain.gain.linearRampToValueAtTime(0, time + note.duration);
-                        
+
                         bass.start(time);
                         bass.stop(time + note.duration);
                     }
-                    
+
                     time += note.duration;
                 });
-                
-                // Loop with pause
-                const totalDuration = melody.reduce((sum, note) => sum + note.duration, 0);
+
+                const totalDuration = melody.reduce((sum, n) => sum + n.duration, 0);
                 setTimeout(() => {
-                    if (audioContext && audioContext.state === 'running' && musicPlaying) {
+                    if (!audioContext) return;
+                    if (myToken !== musicLoopToken) return;
+                    if (audioContext.state === 'running' && musicPlaying) {
                         playMelody(audioContext.currentTime + 1.0);
                     }
                 }, (totalDuration + 1.0) * 1000);
             }
-            
-            // Start melody
-            if (audioContext && audioContext.state === 'running') {
+
+            // Start safely (ensure running)
+            if (audioContext && audioContext.state === 'running' && musicPlaying) {
                 playMelody(audioContext.currentTime + 0.3);
             }
         }
 
+        // SFX helpers
+        async function sfxReady() {
+            await ensureAudioContextRunning();
+            // IMPORTANT: do not force-start background music for sfx
+        }
+
         function playSpinSound() {
-            initAudio();
-            const oscillator = audioContext.createOscillator();
-            const gainNode = audioContext.createGain();
-            
-            oscillator.connect(gainNode);
-            gainNode.connect(audioContext.destination);
-            
-            oscillator.frequency.setValueAtTime(200, audioContext.currentTime);
-            oscillator.frequency.exponentialRampToValueAtTime(100, audioContext.currentTime + 0.3);
-            
-            gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
-            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
-            
-            oscillator.start();
-            oscillator.stop(audioContext.currentTime + 0.3);
+            sfxReady().then(() => {
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+
+                oscillator.frequency.setValueAtTime(200, audioContext.currentTime);
+                oscillator.frequency.exponentialRampToValueAtTime(100, audioContext.currentTime + 0.3);
+
+                gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+
+                oscillator.start();
+                oscillator.stop(audioContext.currentTime + 0.3);
+            });
         }
 
         function playTickSound() {
-            initAudio();
-            const oscillator = audioContext.createOscillator();
-            const gainNode = audioContext.createGain();
-            
-            oscillator.connect(gainNode);
-            gainNode.connect(audioContext.destination);
-            
-            oscillator.frequency.value = 1200;
-            oscillator.type = 'sine';
-            
-            gainNode.gain.setValueAtTime(0.02, audioContext.currentTime);
-            gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.03);
-            
-            oscillator.start();
-            oscillator.stop(audioContext.currentTime + 0.03);
+            sfxReady().then(() => {
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+
+                oscillator.frequency.value = 1200;
+                oscillator.type = 'sine';
+
+                gainNode.gain.setValueAtTime(0.02, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.03);
+
+                oscillator.start();
+                oscillator.stop(audioContext.currentTime + 0.03);
+            });
         }
 
         function playWinSound() {
-            initAudio();
-            const oscillator = audioContext.createOscillator();
-            const gainNode = audioContext.createGain();
-            
-            oscillator.connect(gainNode);
-            gainNode.connect(audioContext.destination);
-            
-            oscillator.frequency.setValueAtTime(400, audioContext.currentTime);
-            oscillator.frequency.exponentialRampToValueAtTime(800, audioContext.currentTime + 0.2);
-            oscillator.frequency.exponentialRampToValueAtTime(600, audioContext.currentTime + 0.4);
-            
-            gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
-            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.4);
-            
-            oscillator.start();
-            oscillator.stop(audioContext.currentTime + 0.4);
+            sfxReady().then(() => {
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+
+                oscillator.frequency.setValueAtTime(400, audioContext.currentTime);
+                oscillator.frequency.exponentialRampToValueAtTime(800, audioContext.currentTime + 0.2);
+                oscillator.frequency.exponentialRampToValueAtTime(600, audioContext.currentTime + 0.4);
+
+                gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.4);
+
+                oscillator.start();
+                oscillator.stop(audioContext.currentTime + 0.4);
+            });
         }
 
         function playLegendarySound() {
-            initAudio();
-            
-            // Epic rising fanfare with multiple layers
-            // Bass note
-            const bass = audioContext.createOscillator();
-            const bassGain = audioContext.createGain();
-            bass.connect(bassGain);
-            bassGain.connect(audioContext.destination);
-            bass.frequency.value = 130.81; // C3
-            bass.type = 'sine';
-            bassGain.gain.setValueAtTime(0.25, audioContext.currentTime);
-            bassGain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 1.5);
-            bass.start();
-            bass.stop(audioContext.currentTime + 1.5);
-            
-            // Epic chord progression with shimmer
-            const chord1 = [261.63, 329.63, 392.00]; // C E G
-            const chord2 = [293.66, 369.99, 440.00]; // D F# A
-            const chord3 = [329.63, 392.00, 493.88]; // E G B
-            
-            [chord1, chord2, chord3].forEach((frequencies, chordIndex) => {
-                frequencies.forEach((freq, noteIndex) => {
-                    setTimeout(() => {
-                        const osc = audioContext.createOscillator();
-                        const gain = audioContext.createGain();
-                        
-                        osc.connect(gain);
-                        gain.connect(audioContext.destination);
-                        
-                        osc.frequency.value = freq;
-                        osc.type = 'triangle';
-                        
-                        const startTime = audioContext.currentTime;
-                        gain.gain.setValueAtTime(0.12, startTime);
-                        gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.8);
-                        
-                        osc.start(startTime);
-                        osc.stop(startTime + 0.8);
-                    }, chordIndex * 250 + noteIndex * 30);
+            sfxReady().then(() => {
+                // Bass
+                const bass = audioContext.createOscillator();
+                const bassGain = audioContext.createGain();
+                bass.connect(bassGain);
+                bassGain.connect(audioContext.destination);
+                bass.frequency.value = 130.81;
+                bass.type = 'sine';
+                bassGain.gain.setValueAtTime(0.25, audioContext.currentTime);
+                bassGain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 1.5);
+                bass.start();
+                bass.stop(audioContext.currentTime + 1.5);
+
+                const chord1 = [261.63, 329.63, 392.00];
+                const chord2 = [293.66, 369.99, 440.00];
+                const chord3 = [329.63, 392.00, 493.88];
+
+                [chord1, chord2, chord3].forEach((freqs, chordIndex) => {
+                    freqs.forEach((freq, noteIndex) => {
+                        setTimeout(() => {
+                            if (!audioContext || audioContext.state !== 'running') return;
+                            const osc = audioContext.createOscillator();
+                            const gain = audioContext.createGain();
+                            osc.connect(gain);
+                            gain.connect(audioContext.destination);
+                            osc.frequency.value = freq;
+                            osc.type = 'triangle';
+
+                            const startTime = audioContext.currentTime;
+                            gain.gain.setValueAtTime(0.12, startTime);
+                            gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.8);
+
+                            osc.start(startTime);
+                            osc.stop(startTime + 0.8);
+                        }, chordIndex * 250 + noteIndex * 30);
+                    });
                 });
+
+                for (let i = 0; i < 8; i++) {
+                    setTimeout(() => {
+                        if (!audioContext || audioContext.state !== 'running') return;
+                        const sparkle = audioContext.createOscillator();
+                        const sparkleGain = audioContext.createGain();
+
+                        sparkle.connect(sparkleGain);
+                        sparkleGain.connect(audioContext.destination);
+
+                        sparkle.frequency.value = 1500 + Math.random() * 1000;
+                        sparkle.type = 'sine';
+
+                        sparkleGain.gain.setValueAtTime(0.08, audioContext.currentTime);
+                        sparkleGain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.2);
+
+                        sparkle.start();
+                        sparkle.stop(audioContext.currentTime + 0.2);
+                    }, i * 150);
+                }
             });
-            
-            // Sparkle sounds
-            for (let i = 0; i < 8; i++) {
-                setTimeout(() => {
-                    const sparkle = audioContext.createOscillator();
-                    const sparkleGain = audioContext.createGain();
-                    
-                    sparkle.connect(sparkleGain);
-                    sparkleGain.connect(audioContext.destination);
-                    
-                    sparkle.frequency.value = 1500 + Math.random() * 1000;
-                    sparkle.type = 'sine';
-                    
-                    sparkleGain.gain.setValueAtTime(0.08, audioContext.currentTime);
-                    sparkleGain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.2);
-                    
-                    sparkle.start();
-                    sparkle.stop(audioContext.currentTime + 0.2);
-                }, i * 150);
-            }
         }
 
         function playModalOpenSound() {
-            initAudio();
-            const oscillator = audioContext.createOscillator();
-            const gainNode = audioContext.createGain();
-            
-            oscillator.connect(gainNode);
-            gainNode.connect(audioContext.destination);
-            
-            oscillator.frequency.setValueAtTime(600, audioContext.currentTime);
-            oscillator.frequency.exponentialRampToValueAtTime(1200, audioContext.currentTime + 0.15);
-            
-            gainNode.gain.setValueAtTime(0.15, audioContext.currentTime);
-            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.15);
-            
-            oscillator.start();
-            oscillator.stop(audioContext.currentTime + 0.15);
+            sfxReady().then(() => {
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+
+                oscillator.frequency.setValueAtTime(600, audioContext.currentTime);
+                oscillator.frequency.exponentialRampToValueAtTime(1200, audioContext.currentTime + 0.15);
+
+                gainNode.gain.setValueAtTime(0.15, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.15);
+
+                oscillator.start();
+                oscillator.stop(audioContext.currentTime + 0.15);
+            });
         }
 
         function getRandomValentine() {
@@ -974,36 +858,22 @@
                 setTimeout(() => {
                     const sparkle = document.createElement('div');
                     sparkle.className = 'sparkle';
-                    
+
                     const angle = (Math.PI * 2 * i) / sparkleCount;
                     const distance = 50 + Math.random() * 200;
                     const endX = centerX + Math.cos(angle) * distance;
                     const endY = centerY + Math.sin(angle) * distance;
-                    
+
                     sparkle.style.left = centerX + 'px';
                     sparkle.style.top = centerY + 'px';
-                    
+
                     document.body.appendChild(sparkle);
-                    
-                    // Animate sparkle
+
                     sparkle.animate([
-                        { 
-                            left: centerX + 'px', 
-                            top: centerY + 'px', 
-                            opacity: 1,
-                            transform: 'scale(0)'
-                        },
-                        { 
-                            left: endX + 'px', 
-                            top: endY + 'px', 
-                            opacity: 0,
-                            transform: 'scale(1.5)'
-                        }
-                    ], {
-                        duration: 1000 + Math.random() * 500,
-                        easing: 'ease-out'
-                    });
-                    
+                        { left: centerX + 'px', top: centerY + 'px', opacity: 1, transform: 'scale(0)' },
+                        { left: endX + 'px', top: endY + 'px', opacity: 0, transform: 'scale(1.5)' }
+                    ], { duration: 1000 + Math.random() * 500, easing: 'ease-out' });
+
                     setTimeout(() => sparkle.remove(), 1500);
                 }, i * 10);
             }
@@ -1013,34 +883,11 @@
             const reveal = document.getElementById('legendaryReveal');
             reveal.style.opacity = '1';
             reveal.style.animation = 'legendaryFlash 1.5s ease-out';
-            
-            // Create sparkles
             createSparkles();
-            
-            // Reset animation
             setTimeout(() => {
                 reveal.style.opacity = '0';
                 reveal.style.animation = 'none';
             }, 1500);
-        }
-
-        function updateCardUnderArrow(reel) {
-            const cards = reel.querySelectorAll('.card');
-            const reelRect = reel.getBoundingClientRect();
-            const screenCenter = window.innerWidth / 2;
-            
-            cards.forEach(card => {
-                const cardRect = card.getBoundingClientRect();
-                const cardCenter = cardRect.left + (cardRect.width / 2);
-                const distance = Math.abs(cardCenter - screenCenter);
-                
-                // If card center is within 100px of screen center, it's under arrow
-                if (distance < 100) {
-                    card.classList.add('under-arrow');
-                } else {
-                    card.classList.remove('under-arrow');
-                }
-            });
         }
 
         function spin() {
@@ -1051,26 +898,17 @@
             const refreshBtn = document.getElementById('refreshBtn');
             const arrow = document.querySelector('.selector');
 
-            // Hide button
             refreshBtn.classList.remove('visible');
-
-            // Clear existing cards
             reel.innerHTML = '';
 
-            // Remove winner class from all cards
-            const cards = reel.querySelectorAll('.card');
-            cards.forEach(c => c.classList.remove('winner'));
-
-            // Create cards
             const totalCards = 40;
-            const winnerIndex = 20; // Middle position
+            const winnerIndex = 20;
 
-            // Get the winner valentine FIRST
             winnerValentine = getRandomValentine();
 
             for (let i = 0; i < totalCards; i++) {
-                const valentine = (i === winnerIndex) 
-                    ? winnerValentine  // Use the pre-selected winner
+                const valentine = (i === winnerIndex)
+                    ? winnerValentine
                     : valentines[Math.floor(Math.random() * valentines.length)];
 
                 const card = document.createElement('div');
@@ -1085,65 +923,35 @@
                 reel.appendChild(card);
             }
 
-            // Reset position instantly
             reel.style.transition = 'none';
             reel.style.transform = 'translateX(0) translateY(-50%)';
-
-            // Force reflow
             reel.offsetHeight;
 
-            // Calculate winning position using ACTUAL card dimensions from DOM
             const firstCard = reel.querySelector('.card');
             const actualCardWidth = firstCard ? firstCard.offsetWidth : 180;
             const computedStyle = window.getComputedStyle(reel);
             const actualGap = parseInt(computedStyle.gap) || 25;
             const cardAndGap = actualCardWidth + actualGap;
-            
-            console.log('Card width from DOM:', actualCardWidth);
-            console.log('Gap from DOM:', actualGap);
-            console.log('Card + gap:', cardAndGap);
-            
-            // IMPORTANT: reel has padding: 0 50vw which adds 50vw to the left!
-            const reelPadding = window.innerWidth * 0.5; // 50vw in pixels
-            
-            // Calculate offset to center the winning card under the arrow
-            // Position of winning card's left edge (including padding)
-            const winnerLeftEdge = reelPadding + (winnerIndex * cardAndGap);
-            // Position of winning card's center
-            const winnerCenter = winnerLeftEdge + (actualCardWidth / 2);
-            // Screen center where arrow is
-            const screenCenter = window.innerWidth / 2;
-            // How much we need to move to align winner center with screen center
-            const offset = winnerCenter - screenCenter;
-            
-            console.log('Winner left edge:', winnerLeftEdge);
-            console.log('Winner center:', winnerCenter);
-            console.log('Screen center:', screenCenter);
-            console.log('Offset:', offset);
+            const reelPadding = window.innerWidth * 0.5;
 
-            // Start animation
+            const winnerLeftEdge = reelPadding + (winnerIndex * cardAndGap);
+            const winnerCenter = winnerLeftEdge + (actualCardWidth / 2);
+            const screenCenter = window.innerWidth / 2;
+            const offset = winnerCenter - screenCenter;
+
             setTimeout(() => {
-                // Start arrow shaking
                 arrow.classList.add('shaking');
-                
-                // Add spinning class for card bounce
-                reel.classList.add('spinning');
-                
-                // Play spin sound
                 playSpinSound();
-                
-                // Track card under arrow and play tick sounds
+
                 let lastTickedCard = null;
                 const trackInterval = setInterval(() => {
                     const cards = reel.querySelectorAll('.card');
                     let currentCard = null;
-                    
+
                     cards.forEach(card => {
-                        const cardRect = card.getBoundingClientRect();
-                        const cardCenter = cardRect.left + (cardRect.width / 2);
-                        const screenCenter = window.innerWidth / 2;
-                        const distance = Math.abs(cardCenter - screenCenter);
-                        
+                        const rect = card.getBoundingClientRect();
+                        const center = rect.left + (rect.width / 2);
+                        const distance = Math.abs(center - (window.innerWidth / 2));
                         if (distance < 100) {
                             card.classList.add('under-arrow');
                             currentCard = card;
@@ -1151,77 +959,56 @@
                             card.classList.remove('under-arrow');
                         }
                     });
-                    
-                    // Play tick sound when a new card enters under arrow
+
                     if (currentCard && currentCard !== lastTickedCard) {
                         playTickSound();
                         lastTickedCard = currentCard;
                     }
                 }, 50);
-                
+
                 reel.style.transition = 'transform 4s cubic-bezier(0.15, 0.5, 0.3, 1)';
                 reel.style.transform = `translateX(-${offset}px) translateY(-50%)`;
 
-                // After animation
                 setTimeout(() => {
-                    // Stop tracking
                     clearInterval(trackInterval);
-                    
-                    // Stop arrow shaking
                     arrow.classList.remove('shaking');
-                    
-                    // Stop card bouncing
-                    reel.classList.remove('spinning');
-                    
-                    // Remove all under-arrow classes
+
                     const allCards = reel.querySelectorAll('.card');
-                    allCards.forEach(c => c.classList.remove('under-arrow'));
-                    
-                    // Find the ACTUAL card under the arrow (not using index!)
+                    allCards.forEach(c => c.classList.remove('under-arrow', 'winner'));
+
                     let actualWinnerCard = null;
                     let minDistance = Infinity;
                     const arrowCenter = window.innerWidth / 2;
-                    
+
                     allCards.forEach(card => {
-                        const cardRect = card.getBoundingClientRect();
-                        const cardCenter = cardRect.left + (cardRect.width / 2);
-                        const distance = Math.abs(cardCenter - arrowCenter);
-                        
+                        const rect = card.getBoundingClientRect();
+                        const center = rect.left + (rect.width / 2);
+                        const distance = Math.abs(center - arrowCenter);
                         if (distance < minDistance) {
                             minDistance = distance;
                             actualWinnerCard = card;
                         }
                     });
-                    
-                    console.log('Card under arrow found, distance:', minDistance);
-                    
-                    // Mark the actual winner
+
                     if (actualWinnerCard) {
                         actualWinnerCard.classList.add('winner');
-                        
-                        // Find which valentine this card represents
-                        const cardIndex = Array.from(allCards).indexOf(actualWinnerCard);
-                        console.log('Winner card index:', cardIndex, 'Expected:', winnerIndex);
-                        
-                        // Update winnerValentine if needed (use the one we set at winnerIndex)
-                        // This ensures modal shows correct valentine
-                        
-                        playWinSound();
                     }
 
-                    // Check if legendary and trigger special animation
+                    // FIX: do not overlap win + legendary sound
                     if (winnerValentine.rarity === 'legendary') {
                         showLegendaryReveal();
                         playLegendarySound();
+                    } else {
+                        playWinSound();
                     }
 
-                    // Show modal with winner
                     setTimeout(() => {
                         playModalOpenSound();
                         showModal();
                         refreshBtn.classList.add('visible');
                         isSpinning = false;
                     }, winnerValentine.rarity === 'legendary' ? 1500 : 500);
+
                 }, 4000);
             }, 100);
         }
@@ -1232,11 +1019,9 @@
             const modalEmoji = document.getElementById('modalEmoji');
             const modalText = document.getElementById('modalText');
 
-            // Use the actual winner card data
             modalEmoji.textContent = winnerValentine.emoji;
             modalText.textContent = winnerValentine.text;
 
-            // Add legendary class if it's a legendary card
             if (winnerValentine.rarity === 'legendary') {
                 modalCard.classList.add('legendary');
             } else {
@@ -1247,8 +1032,7 @@
         }
 
         function closeModal() {
-            const modal = document.getElementById('modalOverlay');
-            modal.classList.remove('visible');
+            document.getElementById('modalOverlay').classList.remove('visible');
         }
 
         function startGame() {
@@ -1268,20 +1052,21 @@
         });
         document.getElementById('modalClose').addEventListener('click', closeModal);
         document.getElementById('modalOverlay').addEventListener('click', (e) => {
-            if (e.target.id === 'modalOverlay') {
-                closeModal();
-            }
+            if (e.target.id === 'modalOverlay') closeModal();
         });
+
         document.getElementById('musicToggle').addEventListener('click', toggleMusic);
 
-        // Auto-start music on first click anywhere (except music toggle)
-        let musicStarted = false;
-        document.addEventListener('click', function(e) {
-            if (!musicStarted && e.target.id !== 'musicToggle') {
-                initAudio();
-                musicStarted = true;
-            }
-        });
+        // Mobile-safe auto start: click + touchstart, once
+        function initOnce(e) {
+            if (musicStarted) return;
+            if (e.target && e.target.id === 'musicToggle') return;
+            initAudio();
+            musicStarted = true;
+        }
+
+        document.addEventListener('click', initOnce, { once: true });
+        document.addEventListener('touchstart', initOnce, { once: true, passive: true });
 
         createHearts();
     </script>
